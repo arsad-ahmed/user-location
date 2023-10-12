@@ -58,14 +58,16 @@ class MainActivity:AppCompatActivity()
 
         if(email != "123" || password != "123")
         {
-            Toast.makeText(this, "credential does not match", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "credentials do not match", Toast.LENGTH_SHORT).show()
         }
 
         else
         {
             sharedPreferences.changeValue()
             val intent=Intent(this,MapActivity::class.java)
+            intent.flags=Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(intent)
+            Toast.makeText(this, "login successfully", Toast.LENGTH_SHORT).show()
         }
     }
 }
